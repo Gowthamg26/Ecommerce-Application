@@ -1,18 +1,25 @@
 package dev.gowtham.ProductServices.entity;
 
-import dev.gowtham.ProductServices.dto.FakeStoreProductRatingResponseDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Product {
+@Entity
+public class Product extends BaseModel{
 
-    public int id;
     public String title;
     public double price;
     public String description;
-    public String category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @JsonBackReference
+    public ProductCategory productCategory;
     public String image;
 
 }

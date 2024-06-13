@@ -1,4 +1,4 @@
-package dev.gowtham.ProductServices.controlleradvice;
+package dev.gowtham.ProductServices.customexceptions;
 
 public class InvalidProductDetailException extends RuntimeException{
 

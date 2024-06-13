@@ -5,7 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductRatingRequestDTO {
-    private double rate;
-    private int count;
+public class CategoryRequestDTO {
+    private String categoryName;
 }

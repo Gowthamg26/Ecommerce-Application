@@ -10,8 +10,7 @@ public class ProductRequestDTO {
     private String title;
     private double price;
     private String description;
-    private String category;
+    private String categoryName;
     private String image;
-    private ProductRatingRequestDTO rating;
 
 }

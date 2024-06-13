@@ -1,55 +1,46 @@
 package dev.gowtham.ProductServices.service;
 
 import dev.gowtham.ProductServices.client.FakeStoreClient;
-import dev.gowtham.ProductServices.controlleradvice.NoProductFoundException;
-import dev.gowtham.ProductServices.dto.FakeStoreProductResponseDTO;
+import dev.gowtham.ProductServices.customexceptions.NoProductFoundException;
 import dev.gowtham.ProductServices.dto.ProductRequestDTO;
+import dev.gowtham.ProductServices.dto.ProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class FakeStoreProductServiceImpl implements ProductService{
+@Service("FakeStoreProductService")
+public class FakeStoreProductServiceImpl{
 
     @Autowired
     private FakeStoreClient fakeStoreClient;
 
-
-    @Override
-    public FakeStoreProductResponseDTO getProductByID(int id) {
-
-        FakeStoreProductResponseDTO fakeStoreProductResponse = fakeStoreClient.getProductById(id);
+    public ProductResponseDTO getProductByID(int id) {
+        ProductResponseDTO fakeStoreProductResponse = fakeStoreClient.getProductById(id);
         if (fakeStoreProductResponse == null){
             throw new NoProductFoundException("No Product Found with the Id: " + id);
         }
         return fakeStoreProductResponse;
     }
 
-    @Override
-    public List<FakeStoreProductResponseDTO> getAllProducts() {
-        List<FakeStoreProductResponseDTO> fakestoreResponse = fakeStoreClient.getAllProducts();
+    public List<ProductResponseDTO> getAllProducts() {
+        List<ProductResponseDTO> fakestoreResponse = fakeStoreClient.getAllProducts();
         if (fakestoreResponse == null){
             throw new NoProductFoundException("No Product Found");
         }
         return fakestoreResponse;
     }
 
-    @Override
-    public FakeStoreProductResponseDTO createProduct(ProductRequestDTO productRequestDTO) {
-
-        FakeStoreProductResponseDTO productResponseDTO = fakeStoreClient.createProduct(productRequestDTO);
-
+    public ProductResponseDTO createProduct(ProductRequestDTO productRequestDTO) {
+        ProductResponseDTO productResponseDTO = fakeStoreClient.createProduct(productRequestDTO);
         return productResponseDTO;
     }
 
-    @Override
-    public String updateProduct(ProductRequestDTO productRequestDTO, int id) {
-        fakeStoreClient.updateProduct(productRequestDTO, id);
-        return "updated";
+    public ProductResponseDTO updateProduct(ProductRequestDTO productRequestDTO, int id) {
+        ProductResponseDTO productResponseDTO = fakeStoreClient.updateProduct(productRequestDTO, id);
+        return productResponseDTO;
     }
 
-    @Override
     public Boolean deleteProduct(int id) {
         fakeStoreClient.deleteProductById(id);
         return true;

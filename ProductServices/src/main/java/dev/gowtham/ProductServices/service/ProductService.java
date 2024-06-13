@@ -1,16 +1,15 @@
 package dev.gowtham.ProductServices.service;
 
-import dev.gowtham.ProductServices.dto.FakeStoreProductRatingResponseDTO;
-import dev.gowtham.ProductServices.dto.FakeStoreProductResponseDTO;
 import dev.gowtham.ProductServices.dto.ProductRequestDTO;
-import dev.gowtham.ProductServices.entity.Product;
+import dev.gowtham.ProductServices.dto.ProductResponseDTO;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ProductService {
-    FakeStoreProductResponseDTO getProductByID(int id);
-    List<FakeStoreProductResponseDTO> getAllProducts();
-    FakeStoreProductResponseDTO createProduct(ProductRequestDTO productRequestDTO);
-    String updateProduct(ProductRequestDTO productRequestDTO, int id);
-    Boolean deleteProduct(int id);
+    ProductResponseDTO getProductByID(UUID id);
+    List<ProductResponseDTO> getAllProducts();
+    ProductResponseDTO createProduct(ProductRequestDTO productRequestDTO);
+    ProductResponseDTO updateProduct(ProductRequestDTO productRequestDTO, UUID id);
+    Boolean deleteProduct(UUID id);
 }
