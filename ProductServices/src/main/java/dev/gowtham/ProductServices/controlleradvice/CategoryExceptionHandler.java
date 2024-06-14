@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.List;
+
 @ControllerAdvice(basePackageClasses = CategoryController.class)
 public class CategoryExceptionHandler {
 
@@ -18,7 +20,6 @@ public class CategoryExceptionHandler {
 
         return new ResponseEntity<>(exceptionResponseDTO, HttpStatus.BAD_REQUEST);
     }
-
     @ExceptionHandler(NoSuchCategoryException.class)
     public ResponseEntity<ExceptionResponseDTO> noCategoryException(NoSuchCategoryException pe){
         ExceptionResponseDTO exceptionResponseDTO = new ExceptionResponseDTO(pe.getMessage(), 404);
